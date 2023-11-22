@@ -1,0 +1,32 @@
+name: Deployment Excr
+on: push
+jobs: 
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get code
+        uses: actions/checkout@v4
+      - name: Install dependencies
+        run: npm ci
+      - name: lint testing script
+        run: npm run lint
+  Test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get code
+        uses: actions/checkout@v4
+      - name: Install dependencies
+        run: npm ci 
+      - name: Testing
+        run: npm run test          
+  deploy: 
+    runs-on: ubuntu-latest
+    steps: 
+      - name: Get code
+        uses: actions/checkout@v4
+      - name: Install dependencies
+        run: npm ci
+      - name: Build Code
+        run: npm run build  
+      - name: Deployment
+        run: echo "Deploying ...."        
